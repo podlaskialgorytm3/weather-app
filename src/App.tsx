@@ -1,9 +1,6 @@
-const App = () => {
-  return (
-    <div>
-      <h1 className="text-5xl">Weather App</h1>
-    </div>
-  )
-}
+const App = () => (
+  <div className="bg-primary h-[100vh] w-full bg-center bg-no-repeat">
+  </div>
+)
 
 export default App;
