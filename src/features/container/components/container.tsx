@@ -1,17 +1,18 @@
 import { SearchBar } from "../../search/components/search-bar"
 import { useState } from "react";
+import { PreventDefault, TargetValue } from "../../search/types/search-bar";
 
 export const Container = () => {
     const [location, setLocation] = useState<string>('');
     const [searchLocations, setSearchLocations] = useState<{searchLocations: string[]}>({searchLocations: []});
 
-    const handleSubmit = (e: { preventDefault: () => void }) => {
+    const handleSubmit = (e: PreventDefault) => {
         e.preventDefault();
         setSearchLocations(prevLocations => ({searchLocations: [...prevLocations.searchLocations, location]}));
         console.log(searchLocations)
     }
 
-    const handleChange = (e: { target: { value: string; }; }) => {
+    const handleChange = (e: TargetValue) => {
         setLocation(e.target.value);
     };
 

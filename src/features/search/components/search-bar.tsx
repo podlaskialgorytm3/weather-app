@@ -3,7 +3,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 
-export const SearchBar = ({handleChange,handleSubmit} : {handleChange: (e: { target: { value: string; }; }) => void, handleSubmit: (e: { preventDefault: () => void; }) => void}) => {
+import { HandleChange, HandleSubmit } from '../types/search-bar';
+
+export const SearchBar = ({handleChange,handleSubmit}:{handleChange: HandleChange, handleSubmit: HandleSubmit}) => {
     return (
         <div className="flex justify-center items-center pt-5">
            <form onSubmit={handleSubmit}>
