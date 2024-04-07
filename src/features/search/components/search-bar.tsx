@@ -3,21 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 
-import { useState } from 'react';
-
-export const SearchBar = () => {
-    const [searchLocations, setSearchLocations] = useState<{searchLocations: string[]}>({searchLocations: []});
-    const [location, setLocation] = useState<string>('');
-
-    const handleChange = (e: { target: { value: string; }; }) => {
-        setLocation(e.target.value);
-    };
-    const handleSubmit = (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-        setSearchLocations({searchLocations: [...searchLocations.searchLocations, location]});
-        setLocation('');
-    }
-
+export const SearchBar = ({handleChange,handleSubmit} : {handleChange: (e: { target: { value: string; }; }) => void, handleSubmit: (e: { preventDefault: () => void; }) => void}) => {
     return (
         <div className="flex justify-center items-center pt-5">
            <form onSubmit={handleSubmit}>
