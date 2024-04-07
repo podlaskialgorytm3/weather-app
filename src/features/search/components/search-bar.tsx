@@ -3,16 +3,16 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 
-import { HandleChange, HandleSubmit } from '../types/search-bar';
-
-export const SearchBar = ({handleChange,handleSubmit}:{handleChange: HandleChange, handleSubmit: HandleSubmit}) => {
+export const SearchBar = ({formik} : {formik: any}) => {
     return (
         <div className="flex justify-center items-center pt-5">
-           <form onSubmit={handleSubmit}>
+           <form onSubmit={formik.handleSubmit}>
                 <OutlinedInput
+                    id="location"
                     placeholder="Search your location ..."
                     fullWidth
-                    onChange={handleChange}
+                    onChange={formik.handleChange}
+                    value={formik.values.location} 
                     endAdornment={
                         <InputAdornment position="end">
                             <IconButton>
