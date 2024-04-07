@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const fetchWeather = async (location: string) => {
     if (!location) {
@@ -6,14 +7,13 @@ const fetchWeather = async (location: string) => {
     }
 
     try {
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&appid=${process.env.REACT_APP_API_WEATHER_KEY}`);
+        const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API_WEATHER_KEY}&units=metric&lang=en`);
 
-        if (!response.ok) {
-            throw new Error('Something went wrong');
+        if (!response.data) {
+            throw new Error('Empty response');
         }
 
-        const data = await response.json();
-        return data[0];
+        return response.data;
     } catch (error) {
         console.error('Error fetching weather data:', error);
         throw error;
