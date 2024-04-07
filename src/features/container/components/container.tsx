@@ -1,24 +1,35 @@
-import { SearchBar } from "../../search/components/search-bar"
-import { useState } from "react";
-import { PreventDefault, TargetValue } from "../../search/types/search-bar";
+import { SearchBar } from "../../search/components/search-bar";
+import { useFormik } from 'formik';
+import { useState, useEffect } from "react"; 
+import { useFetchWeather } from "../api/use-fetch-weather";
 
 export const Container = () => {
-    const [location, setLocation] = useState<string>('');
-    const [searchLocations, setSearchLocations] = useState<{searchLocations: string[]}>({searchLocations: []});
+    const [location, setLocation] = useState('');
+    const { data, refetch, isLoading } = useFetchWeather(location);
 
-    const handleSubmit = (e: PreventDefault) => {
-        e.preventDefault();
-        setSearchLocations(prevLocations => ({searchLocations: [...prevLocations.searchLocations, location]}));
-        console.log(searchLocations)
-    }
+    const formik = useFormik({
+        initialValues: {
+            location: '',
+        },
+        onSubmit: (values: { location: string }): void => {
+            setLocation(values.location);
+        },
+    });
 
-    const handleChange = (e: TargetValue) => {
-        setLocation(e.target.value);
-    };
+    useEffect(() => {
+        if (location) {
+            refetch();
+        }
+    }, [location, refetch]);
 
-    return(
+    return (
         <div className="bg-gradient-to-r from-indigo-400 to-cyan-400 h-[100vh] w-full bg-center bg-no-repeat">
-            <SearchBar handleChange={handleChange} handleSubmit={handleSubmit}/>
+            <SearchBar formik={formik} />
+            {isLoading ? (
+                <div>Loading...</div>
+            ) : (
+                <div>{data && JSON.stringify(data)}</div>
+            )}
         </div>
-    )
-}
+    );
+};
