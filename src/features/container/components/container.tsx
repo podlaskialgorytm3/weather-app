@@ -1,4 +1,5 @@
 import { SearchBar } from "../../search/components/search-bar";
+import { WeatherCard } from "./weather-card";
 import { useFormik } from 'formik';
 import { useState, useEffect } from "react"; 
 import { useFetchWeather } from "../api/use-fetch-weather";
@@ -45,17 +46,22 @@ export const Container = () => {
     return (
         <div className="bg-gradient-to-r from-indigo-400 to-cyan-400 h-[auto] w-full bg-center bg-no-repeat min-h-[100vh]">
             <SearchBar formik={formik} />
-            <div className="flex flex-col items-center justify-center">
-                {isLoading && <Loading size={100} />}
-                {forecasts && (
-                    forecasts.map((forecast, index) => (
-                        forecast !== undefined && (
-                            <div key={index} className="bg-white bg-opacity-50 p-5 rounded-lg m-5">
-                                {JSON.stringify(forecast)}
-                            </div>
-                        )
-                    ))
-                )}
+            <div className="flex flex-col items-center justify-center mt-10">
+                <div className="flex">
+                    <div className="w-[300px] bg-white bg-opacity-50 p-5 rounded-lg m-5 h-[300px]">
+                        Filtry itd...
+                    </div>
+                    <div className="w-[900px]">
+                        {isLoading && <Loading size={100} />}
+                        {forecasts && (
+                            forecasts.map((forecast, index) => (
+                                forecast !== undefined && (
+                                    <WeatherCard key={index} index={index} forecast={forecast} />
+                                )
+                            ))
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     );
