@@ -1,8 +1,8 @@
 import { hourConverter } from "../utils/hour-converter"
 import { WeatherProperty } from "./weather-property"
-import { Forecast } from "../types/forecast"
+import { WeatherCardType } from "../types/weather-card";
 
-export const WeatherCard = ({index,forecast,onDelete} : {index:number,forecast: Forecast,onDelete: (city: string) => void}) => {
+export const WeatherCard = ({index,forecast,onDelete} : WeatherCardType) => {
     return(
         <div key={index} className="bg-white bg-opacity-50 p-5 rounded-lg m-5 relative">
             <div className="flex flex-col justify-start">
