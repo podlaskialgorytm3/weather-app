@@ -31,9 +31,6 @@ export const WeatherCard = ({index,forecast} : {index:number,forecast: any}) => 
                         <img src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`} alt="" width={50} />
                     </div>
                 </div>
-                
-                
-                
             </div>
     </div>
     )
