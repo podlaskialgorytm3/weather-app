@@ -14,7 +14,12 @@ export const WeatherCard = ({index,forecast,onDelete} : {index:number,forecast: 
                         alt="" 
                         width={30} 
                     />)}
-                    <h1 className="text-3xl font-bold mb-1">{forecast.city}</h1>
+                    <h1 className="text-3xl font-bold mb-1">
+                        <a 
+                            href={`https://www.google.pl/maps/place/${forecast.city}`}
+                            target="_blank"
+                            >{forecast.city}</a>
+                    </h1>
                 </div>
                 <div className="flex w-[100%] justify-around items-center">
                     <div>
