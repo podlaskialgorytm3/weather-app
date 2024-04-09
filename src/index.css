@@ -5,3 +5,6 @@
 *{
     font-family: 'PT Sans Narrow', sans-serif;
 }
+body::-webkit-scrollbar{
+    display: none;
+}
