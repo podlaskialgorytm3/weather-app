@@ -1,14 +1,16 @@
 import { useFetchWeather } from "../api/use-fetch-weather";
 import { Forecast } from "../types/forecast";
 import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
 
 export const useProcessingData = (location: string) => {
     const [forecasts, setForecasts] = useState<Forecast[]>([]);
     const { data, isError, error, refetch, isLoading } = useFetchWeather(location);
+    const id = uuidv4();
 
-    const handleDelete = (city: string) => {
-        setForecasts((prevValues) => prevValues.filter((forecast) => forecast.city !== city))
+    const handleDelete = (id: string) => {
+        setForecasts((prevValues) => prevValues.filter((forecast) => forecast.id !== id))
     }
     
     useEffect(() => {
@@ -26,6 +28,7 @@ export const useProcessingData = (location: string) => {
     useEffect(() => {
         if(data !== undefined){
             setForecasts((prevValues) => [...prevValues, {
+                id: id,
                 city: data.name,
                 temp: data.main.temp,
                 pressure: data.main.pressure,

@@ -1,4 +1,5 @@
 export interface Forecast {
+    id: string;
     city: string;
     temp: number;
     pressure: number;

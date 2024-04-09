@@ -37,7 +37,7 @@ export const WeatherCard = ({index,forecast,onDelete} : {index:number,forecast: 
                  src="https://static.thenounproject.com/png/53235-200.png" 
                  width={30}
                  className="cursor-pointer absolute top-2 right-2" 
-                 onClick={() => onDelete(forecast.city)}
+                 onClick={() => onDelete(forecast.id)}
             />
     </div>
     )
