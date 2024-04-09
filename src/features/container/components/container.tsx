@@ -1,5 +1,6 @@
 import { SearchBar } from "../../search/components/search-bar";
 import { WeatherCard } from "./weather-card";
+import { Forecast } from "../types/forecast";
 import { useFormik } from 'formik';
 import { useState, useEffect } from "react"; 
 import { useFetchWeather } from "../api/use-fetch-weather";
@@ -8,7 +9,7 @@ import Swal from "sweetalert2"
 
 export const Container = () => {
     const [location, setLocation] = useState('');
-    const [forecasts, setForecasts] = useState([] as object[]);
+    const [forecasts, setForecasts] = useState<Forecast[]>([]);
     const { data, isError, error, refetch, isLoading } = useFetchWeather(location);
 
     const formik = useFormik({
@@ -39,9 +40,22 @@ export const Container = () => {
     },[isError, error])
 
     useEffect(() => {
-        setForecasts((prevValeus) => [...prevValeus,data])
-        console.log(forecasts)
-    },[data])
+        if(data !== undefined){
+            setForecasts((prevValues) => [...prevValues, {
+                city: data.name,
+                temp: data.main.temp,
+                pressure: data.main.pressure,
+                humidity: data.main.humidity,
+                wind: data.wind.speed,
+                sunrise: data.sys.sunrise,
+                sunset: data.sys.sunset,
+                country: data.sys.country,
+                icon: data.weather[0].icon,
+                timezone: data.timezone
+            }])
+        }
+
+        },[data])
     
     return (
         <div className="bg-gradient-to-r from-indigo-400 to-cyan-400 h-[auto] w-full bg-center bg-no-repeat min-h-[100vh]">
@@ -53,13 +67,12 @@ export const Container = () => {
                     </div>
                     <div className="w-[900px]">
                         {isLoading && <Loading size={100} />}
-                        {forecasts && (
+                        {
                             forecasts.map((forecast, index) => (
-                                forecast !== undefined && (
                                     <WeatherCard key={index} index={index} forecast={forecast} />
                                 )
-                            ))
-                        )}
+                            )
+                        }
                     </div>
                 </div>
             </div>
