@@ -1,16 +1,13 @@
 import { SearchBar } from "../../search/components/search-bar";
 import { WeatherCard } from "./weather-card";
-import { Forecast } from "../types/forecast";
 import { useFormik } from 'formik';
 import { useState, useEffect } from "react"; 
-import { useFetchWeather } from "../api/use-fetch-weather";
 import { Loading } from "../../../shared/components/loading";
-import Swal from "sweetalert2"
+import { useProcessingData } from "../hooks/use-processing-data";
 
 export const Container = () => {
     const [location, setLocation] = useState('');
-    const [forecasts, setForecasts] = useState<Forecast[]>([]);
-    const { data, isError, error, refetch, isLoading } = useFetchWeather(location);
+    const { forecasts, isLoading, refetch } = useProcessingData(location);
 
     const formik = useFormik({
         initialValues: {
@@ -27,35 +24,6 @@ export const Container = () => {
         }
     }, [location, refetch]);
 
-    useEffect(() => {
-        if(isError) {
-            Swal.fire({
-                title: "Error",
-                text: error.message,
-                icon: "error",
-                confirmButtonText: "Ok"
-            })
-        }
-    
-    },[isError, error])
-
-    useEffect(() => {
-        if(data !== undefined){
-            setForecasts((prevValues) => [...prevValues, {
-                city: data.name,
-                temp: data.main.temp,
-                pressure: data.main.pressure,
-                humidity: data.main.humidity,
-                wind: data.wind.speed,
-                sunrise: data.sys.sunrise,
-                sunset: data.sys.sunset,
-                country: data.sys.country,
-                icon: data.weather[0].icon,
-                timezone: data.timezone
-            }])
-        }
-
-        },[data])
     
     return (
         <div className="bg-gradient-to-r from-indigo-400 to-cyan-400 h-[auto] w-full bg-center bg-no-repeat min-h-[100vh]">
