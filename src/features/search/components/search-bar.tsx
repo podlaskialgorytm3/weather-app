@@ -15,8 +15,8 @@ export const SearchBar = ({formik} : {formik: any}) => {
                     value={formik.values.location} 
                     endAdornment={
                         <InputAdornment position="end">
-                            <IconButton>
-                                <SearchIcon onClick={formik.handleSubmit} />
+                            <IconButton onClick={formik.handleSubmit}>
+                                <SearchIcon  />
                             </IconButton>
                         </InputAdornment>
                     }
