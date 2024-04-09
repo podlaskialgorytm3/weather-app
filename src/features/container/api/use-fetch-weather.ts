@@ -16,7 +16,7 @@ const fetchWeather = async (location: string) => {
         return response.data;
     } catch (error) {
         console.error('Error fetching weather data:', error);
-        throw error;
+        throw new Error('Incorrect data entered');
     }
 };
 

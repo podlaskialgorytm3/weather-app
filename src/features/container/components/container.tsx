@@ -41,7 +41,7 @@ export const Container = () => {
     useEffect(() => {
         setForecasts((prevValeus) => [...prevValeus,data])
         console.log(forecasts)
-    },[data,location])
+    },[data])
     
     return (
         <div className="bg-gradient-to-r from-indigo-400 to-cyan-400 h-[auto] w-full bg-center bg-no-repeat min-h-[100vh]">
