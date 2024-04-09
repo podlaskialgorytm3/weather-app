@@ -26,20 +26,34 @@ export const useProcessingData = (location: string) => {
     },[isError, error])
 
     useEffect(() => {
+        let isCityInList = false;
         if(data !== undefined){
-            setForecasts((prevValues) => [...prevValues, {
-                id: id,
-                city: data.name,
-                temp: data.main.temp,
-                pressure: data.main.pressure,
-                humidity: data.main.humidity,
-                wind: data.wind.speed,
-                sunrise: data.sys.sunrise,
-                sunset: data.sys.sunset,
-                country: data.sys.country,
-                icon: data.weather[0].icon,
-                timezone: data.timezone
-            }])
+            forecasts.forEach((forecast) => {
+                if(forecast.city == data.name){
+                    Swal.fire({
+                        title: "Error",
+                        text: "City is already in the list!",
+                        icon: "error",
+                        confirmButtonText: "Ok"
+                    })
+                    isCityInList = true;
+                }
+            })
+            if(!isCityInList){
+                setForecasts((prevValues) => [...prevValues, {
+                    id: id,
+                    city: data.name,
+                    temp: data.main.temp,
+                    pressure: data.main.pressure,
+                    humidity: data.main.humidity,
+                    wind: data.wind.speed,
+                    sunrise: data.sys.sunrise,
+                    sunset: data.sys.sunset,
+                    country: data.sys.country,
+                    icon: data.weather[0].icon,
+                    timezone: data.timezone
+                }])
+            }
         }
 
     },[data])
