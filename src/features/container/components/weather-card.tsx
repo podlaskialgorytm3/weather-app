@@ -1,10 +1,10 @@
 import { hourConverter } from "../utils/hour-converter"
 import { WeatherProperty } from "./weather-property"
+import { Forecast } from "../types/forecast"
 
-export const WeatherCard = ({index,forecast} : {index:number,forecast: any}) => {
-    console.log(forecast)
+export const WeatherCard = ({index,forecast,onDelete} : {index:number,forecast: Forecast,onDelete: (city: string) => void}) => {
     return(
-        <div key={index} className="bg-white bg-opacity-50 p-5 rounded-lg m-5">
+        <div key={index} className="bg-white bg-opacity-50 p-5 rounded-lg m-5 relative">
             <div className="flex flex-col justify-start">
                 <div className="flex justify-start items-center">
                 {forecast.country && 
@@ -30,8 +30,15 @@ export const WeatherCard = ({index,forecast} : {index:number,forecast: any}) => 
                     <div>
                         <img src={`https://openweathermap.org/img/wn/${forecast.icon}.png`} alt="" width={50} />
                     </div>
+                    
                 </div>
             </div>
+            <img 
+                 src="https://static.thenounproject.com/png/53235-200.png" 
+                 width={30}
+                 className="cursor-pointer absolute top-2 right-2" 
+                 onClick={() => onDelete(forecast.city)}
+            />
     </div>
     )
     

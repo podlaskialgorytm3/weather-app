@@ -6,6 +6,10 @@ import Swal from "sweetalert2";
 export const useProcessingData = (location: string) => {
     const [forecasts, setForecasts] = useState<Forecast[]>([]);
     const { data, isError, error, refetch, isLoading } = useFetchWeather(location);
+
+    const handleDelete = (city: string) => {
+        setForecasts((prevValues) => prevValues.filter((forecast) => forecast.city !== city))
+    }
     
     useEffect(() => {
         if(isError) {
@@ -37,9 +41,11 @@ export const useProcessingData = (location: string) => {
 
     },[data])
 
+
     return {
         forecasts,
         isLoading,
-        refetch
+        refetch,
+        handleDelete
     }
 }

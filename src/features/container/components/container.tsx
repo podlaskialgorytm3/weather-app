@@ -7,7 +7,7 @@ import { useProcessingData } from "../hooks/use-processing-data";
 
 export const Container = () => {
     const [location, setLocation] = useState('');
-    const { forecasts, isLoading, refetch } = useProcessingData(location);
+    const { forecasts, isLoading, refetch, handleDelete } = useProcessingData(location);
 
     const formik = useFormik({
         initialValues: {
@@ -23,7 +23,6 @@ export const Container = () => {
             refetch();
         }
     }, [location, refetch]);
-
     
     return (
         <div className="bg-gradient-to-r from-indigo-400 to-cyan-400 h-[auto] w-full bg-center bg-no-repeat min-h-[100vh]">
@@ -37,7 +36,12 @@ export const Container = () => {
                         {isLoading && <Loading size={100} />}
                         {
                             forecasts.map((forecast, index) => (
-                                    <WeatherCard key={index} index={index} forecast={forecast} />
+                                    <WeatherCard 
+                                        key={index} 
+                                        index={index} 
+                                        forecast={forecast}
+                                        onDelete={handleDelete} 
+                                        />
                                 )
                             )
                         }
