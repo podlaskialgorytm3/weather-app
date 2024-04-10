@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -6,10 +7,28 @@ import Slider from '@mui/material/Slider';
 import { popupStyle, FILTER_PROPERTIES } from '../constants/filter-pop-up';
 
 
+
 export const FilterPopUp = () => {
   const [open, setOpen] = useState(false);
+  const [property, setProperty] = useState(FILTER_PROPERTIES)
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const changeProperty = (event: React.ChangeEvent<HTMLInputElement>, newValue: number[]) => {
+    const name = event.target.name;
+    setProperty(property.map((item) => {
+      if (item[0] === name) {
+        return [item[0], newValue[0], newValue[1], item[3]]
+      }
+      return item
+    }))
+  }
+
+  const handleSubmit = () => {
+    console.log(property)
+    setOpen(false)
+  }
 
   return (
     <div>
@@ -26,7 +45,9 @@ export const FilterPopUp = () => {
                         <Slider
                             defaultValue={[Number(property[1]),Number(property[2])]}
                             getAriaValueText={(value) => `${value}`}
+                            name={String(property[0])}
                             valueLabelDisplay="auto"
+                            onChange={changeProperty}
                             step={1}
                             min={Number(property[1])}
                             max={Number(property[2])}
@@ -34,7 +55,12 @@ export const FilterPopUp = () => {
                     </div>
                 ))}
             </div>
-            <Button onClick={handleOpen} variant="outlined" color="primary" sx={{marginTop: 3}}>confirm</Button>
+            <Button 
+                onClick={handleSubmit} 
+                variant="outlined"
+                color="primary"
+                sx={{marginTop: 3}}
+            >confirm</Button>
         </Box>
       </Modal>
     </div>
