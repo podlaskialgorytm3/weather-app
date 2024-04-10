@@ -24,6 +24,7 @@ export const SelectBar = ({handleSort}: {handleSort: (event: SelectChangeEvent) 
                     id="demo-simple-select"
                     label="Sort by:"
                     onChange={handleSort}
+                    defaultValue={JSON.stringify(SELECT_PROPERTIES[0])}
                 >
                     {SELECT_PROPERTIES.map((property, index) => (
                         <MenuItem key={index} value={JSON.stringify(property) || []}>{property[1]}</MenuItem>
