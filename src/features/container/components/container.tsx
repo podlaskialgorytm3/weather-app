@@ -1,9 +1,11 @@
 import { SearchBar } from "../../search/components/search-bar";
 import { WeatherCard } from "./weather-card";
+import { SelectBar } from "./select-bar";
 import { useFormik } from 'formik';
 import { useState, useEffect } from "react"; 
 import { Loading } from "../../../shared/components/loading";
 import { useProcessingData } from "../hooks/use-processing-data";
+
 
 export const Container = () => {
     const [location, setLocation] = useState('');
@@ -30,7 +32,7 @@ export const Container = () => {
             <div className="flex flex-col items-center justify-center mt-10">
                 <div className="flex">
                     <div className="w-[300px] bg-white bg-opacity-50 p-5 rounded-lg m-5 h-[300px]">
-                        Filtry itd...
+                        <SelectBar />
                     </div>
                     <div className="w-[900px]">
                         {isLoading && <Loading size={100} />}
