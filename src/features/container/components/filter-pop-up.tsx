@@ -1,20 +1,9 @@
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { useState } from 'react';
+import { popupStyle, FILTER_PROPERTIES } from '../constants/filter-pop-up';
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 800,
-  height: 600,
-  bgcolor: 'background.paper',
-  borderRadius: 6,
-  boxShadow: 24,
-  p: 4,
-};
 
 export const FilterPopUp = () => {
   const [open, setOpen] = useState(false);
@@ -28,7 +17,7 @@ export const FilterPopUp = () => {
         open={open}
         onClose={handleClose}
       >
-        <Box sx={style}>
+        <Box sx={popupStyle}>
          
         </Box>
       </Modal>
