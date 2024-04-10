@@ -12,10 +12,6 @@ const SELECT_PROPERTIES = [
     ['humidity','from the highest humidity',false],
     ['wind','from the lowest wind',true],
     ['wind','from the highest wind',false],
-    ['sunrise','from the earliest sunrise',true],
-    ['sunrise','from the latest sunrise',false],
-    ['sunset','from the earliest sunset',true],
-    ['sunset','from the latest sunset',false]
 ]
 
 export const SelectBar = ({handleSort}: {handleSort: (event: SelectChangeEvent) => void}) => {
