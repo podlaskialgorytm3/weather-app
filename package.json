@@ -23,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^6.1.6",
     "react-search-box": "^3.0.0",
+    "reactjs-popup": "^2.0.6",
     "sweetalert2": "^11.10.7",
     "uuidv4": "^6.2.13"
   },

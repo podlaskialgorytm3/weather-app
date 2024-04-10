@@ -1,5 +1,6 @@
 import { SearchBar } from "../../search/components/search-bar";
 import { WeatherCard } from "./weather-card";
+import { FilterPopUp } from "./filter-pop-up";
 import { SelectBar } from "./select-bar";
 import { useFormik } from 'formik';
 import { useState, useEffect } from "react"; 
@@ -35,6 +36,7 @@ export const Container = () => {
                 <div className="flex">
                     <div className="w-[300px] bg-white bg-opacity-50 p-5 rounded-lg m-5 h-[300px]">
                         <SelectBar handleSort={handleSort} />
+                        <FilterPopUp />
                     </div>
                     <div className="w-[900px]">
                         {isLoading && <Loading size={100} />}

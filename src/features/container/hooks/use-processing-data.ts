@@ -61,7 +61,8 @@ export const useProcessingData = (location: string) => {
 
     const handleSort = (event: SelectChangeEvent) => {
         const property = JSON.parse(event.target.value);
-        const [propertyType, , isDescending] = property;
+        const propertyType = property[0];
+        const isDescending = property[2];
 
         const sortedForecasts = [...forecasts].sort((a, b) => {
             const firstValue = a[propertyType];
