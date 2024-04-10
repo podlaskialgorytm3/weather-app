@@ -18,11 +18,7 @@ const SELECT_PROPERTIES = [
     ['sunset','from the latest sunset',false]
 ]
 
-export const SelectBar = () => {
-    const handleChange = (event: SelectChangeEvent) => {
-        console.log(JSON.parse(event.target.value)); // Parsowanie wartości do tablicy
-    };
-
+export const SelectBar = ({handleSort}: {handleSort: (event: SelectChangeEvent) => void}) => {
     return (
         <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
@@ -31,7 +27,7 @@ export const SelectBar = () => {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     label="Sort by:"
-                    onChange={handleChange}
+                    onChange={handleSort}
                 >
                     {SELECT_PROPERTIES.map((property, index) => (
                         <MenuItem key={index} value={JSON.stringify(property) || []}>{property[1]}</MenuItem>

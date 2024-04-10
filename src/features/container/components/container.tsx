@@ -9,7 +9,7 @@ import { useProcessingData } from "../hooks/use-processing-data";
 
 export const Container = () => {
     const [location, setLocation] = useState('');
-    const { forecasts, isLoading, refetch, handleDelete } = useProcessingData(location);
+    const { forecasts, isLoading, refetch, handleDelete, handleSort } = useProcessingData(location);
 
     const formik = useFormik({
         initialValues: {
@@ -19,6 +19,8 @@ export const Container = () => {
             setLocation(values.location);
         },
     });
+
+    
 
     useEffect(() => {
         if (location) {
@@ -32,7 +34,7 @@ export const Container = () => {
             <div className="flex flex-col items-center justify-center mt-10">
                 <div className="flex">
                     <div className="w-[300px] bg-white bg-opacity-50 p-5 rounded-lg m-5 h-[300px]">
-                        <SelectBar />
+                        <SelectBar handleSort={handleSort} />
                     </div>
                     <div className="w-[900px]">
                         {isLoading && <Loading size={100} />}

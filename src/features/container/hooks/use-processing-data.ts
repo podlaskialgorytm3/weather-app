@@ -3,6 +3,7 @@ import { Forecast } from "../types/forecast";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
+import { SelectChangeEvent } from "@mui/material";
 
 export const useProcessingData = (location: string) => {
     const [forecasts, setForecasts] = useState<Forecast[]>([]);
@@ -58,11 +59,15 @@ export const useProcessingData = (location: string) => {
 
     },[data])
 
+    const handleSort = (event: SelectChangeEvent) => {
+        console.log(JSON.parse(event.target.value));
+    }
 
     return {
         forecasts,
         isLoading,
         refetch,
-        handleDelete
+        handleDelete,
+        handleSort
     }
 }
