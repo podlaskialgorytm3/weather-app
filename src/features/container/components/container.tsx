@@ -34,7 +34,7 @@ export const Container = () => {
             <SearchBar formik={formik} />
             <div className="flex flex-col items-center justify-center mt-10">
                 <div className="flex">
-                    <div className="w-[300px] bg-white bg-opacity-50 p-5 rounded-lg m-5 h-[300px]">
+                    <div className="w-[300px] bg-white bg-opacity-50 p-5 rounded-lg m-5 h-[180px] flex flex-col justify-around items-center">
                         <SelectBar handleSort={handleSort} />
                         <FilterPopUp />
                     </div>

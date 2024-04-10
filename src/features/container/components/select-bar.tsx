@@ -21,6 +21,7 @@ export const SelectBar = ({handleSort}: {handleSort: (event: SelectChangeEvent) 
                 <InputLabel id="demo-simple-select-label">Sort by:</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
+                    sx={{ width: '250px' }}
                     id="demo-simple-select"
                     label="Sort by:"
                     onChange={handleSort}
