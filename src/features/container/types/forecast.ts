@@ -10,4 +10,5 @@ export interface Forecast {
     country: string;
     icon: string;
     timezone: number;
+    visable: boolean;
 }

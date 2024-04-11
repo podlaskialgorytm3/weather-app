@@ -12,9 +12,10 @@ export const useProcessingData = (location: string) => {
     const [properties, setProperties] = useState(FILTER_PROPERTIES)
     const [changedProperty, setChangedProperty] = useState(FILTER_PROPERTIES)
     const { data, isError, error, refetch, isLoading } = useFetchWeather(location);
+
     const id = uuidv4();
 
-    const handleDelete = (id: string) => {
+    const handleDelete: (id: string) => void = (id: string) => {
         setForecasts((prevValues) => prevValues.filter((forecast) => forecast.id !== id))
     }
     
@@ -56,7 +57,8 @@ export const useProcessingData = (location: string) => {
                     sunset: data.sys.sunset,
                     country: data.sys.country,
                     icon: data.weather[0].icon,
-                    timezone: data.timezone
+                    timezone: data.timezone,
+                    visable: true
                 }])
             }
         }
@@ -93,6 +95,18 @@ export const useProcessingData = (location: string) => {
     
       const handleFilter = () => {
         setProperties(() => changedProperty)
+        setForecasts((prevValues) => prevValues.filter((forecast) => {
+          let isFiltered = true;
+          changedProperty.forEach((property) => {
+            const propertyType: keyof Forecast = property[0];
+            const min = property[4];
+            const max = property[5];
+            if (forecast[propertyType] < min || forecast[propertyType] > max) {
+              isFiltered = false;
+            }
+          })
+          return isFiltered;
+        }))
       }
 
     const filterTools: PropertyProps = {properties, changeProperty, handleFilter}

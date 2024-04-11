@@ -42,12 +42,14 @@ export const Container = () => {
                         {isLoading && <Loading size={100} />}
                         {
                             forecasts.map((forecast, index) => (
-                                    <WeatherCard 
-                                        key={index} 
-                                        index={index} 
+                                    forecast.visable && ( 
+                                        <WeatherCard 
+                                        key={index}
                                         forecast={forecast}
-                                        onDelete={handleDelete} 
+                                        onDelete={(id: string) => handleDelete(id)} 
+                                        index={0}
                                         />
+                                    )
                                 )
                             )
                         }

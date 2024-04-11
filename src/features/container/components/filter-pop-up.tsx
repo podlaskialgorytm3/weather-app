@@ -40,7 +40,7 @@ export const FilterPopUp = ({filterTools} : {filterTools: PropertyProps}) => {
                 ))}
             </div>
             <Button 
-                onClick={handleFilter} 
+                onClick={() => (handleFilter(), handleClose())} 
                 variant="outlined"
                 color="primary"
                 sx={{marginTop: 3}}
