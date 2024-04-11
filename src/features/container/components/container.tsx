@@ -17,6 +17,7 @@ export const Container = () => {
         },
         onSubmit: (values: { location: string }): void => {
             setLocation(values.location);
+            values.location = '';
         },
     });
 
