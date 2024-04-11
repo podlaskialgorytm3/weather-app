@@ -1,5 +1,4 @@
-import { hourConverter } from "../utils/hour-converter"
-import { WeatherProperty } from "./weather-property"
+import { WeatherProperties } from "./weather-properites"
 import { WeatherCardType } from "../types/weather-card";
 import { CountryIcon } from "./country-icon";
 
@@ -20,17 +19,10 @@ export const WeatherCard = ({index,forecast,onDelete} : WeatherCardType) => {
                     <div>
                         <p className="text-5xl font-bold">{Math.round(forecast.temp)}°C</p>
                     </div>
-                    <div className="flex flex-wrap justify-around w-72">
-                        <WeatherProperty property="Pressure" value={`${forecast.pressure} hPa`} />
-                        <WeatherProperty property="Humidity" value={`${forecast.humidity}%`} />
-                        <WeatherProperty property="Wind" value={`${forecast.wind} m/s`} />
-                        <WeatherProperty property="Sunrise" value={hourConverter(forecast.sunrise,forecast.timezone)} />
-                        <WeatherProperty property="Sunset" value={hourConverter(forecast.sunset,forecast.timezone)} />
-                    </div>
+                    <WeatherProperties forecast={forecast} />
                     <div>
                         <img src={`https://openweathermap.org/img/wn/${forecast.icon}.png`} alt="" width={50} />
                     </div>
-                    
                 </div>
             </div>
             <img 
