@@ -3,4 +3,5 @@ export interface PropertyProps {
     properties: PropertyArray;
     changeProperty: (event: React.ChangeEvent<HTMLInputElement>, newValue: number[]) => void;
     handleFilter: () => void;
+    resetFilter: () => void;
 }

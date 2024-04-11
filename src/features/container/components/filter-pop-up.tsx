@@ -8,7 +8,7 @@ import { PropertyProps } from '../types/property';
 
 export const FilterPopUp = ({filterTools} : {filterTools: PropertyProps}) => {
   const [open, setOpen] = useState(false);
-  const {properties, changeProperty, handleFilter} = filterTools;
+  const {properties, changeProperty, handleFilter, resetFilter} = filterTools;
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -38,12 +38,20 @@ export const FilterPopUp = ({filterTools} : {filterTools: PropertyProps}) => {
                     </div>
                 ))}
             </div>
-            <Button 
-                onClick={() => (handleFilter(), handleClose())} 
-                variant="outlined"
-                color="primary"
-                sx={{marginTop: 3}}
-            >confirm</Button>
+            <div className='flex justify-around w-[200px]'>
+                <Button 
+                    onClick={() => (handleFilter(), handleClose())} 
+                    variant="outlined"
+                    color="primary"
+                    sx={{marginTop: 3}}
+                >confirm</Button>
+                <Button
+                    onClick={() => (resetFilter(), handleClose())}
+                    variant="outlined"
+                    color="primary"
+                    sx={{marginTop: 3}}
+                >reset</Button>
+            </div>
         </Box>
       </Modal>
     </div>

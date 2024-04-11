@@ -112,7 +112,19 @@ export const useProcessingData = (location: string) => {
         }))
       }
 
-    const filterTools: PropertyProps = {properties, changeProperty, handleFilter}
+      const resetFilter = () => {
+        setProperties(() => FILTER_PROPERTIES)
+        setChangedProperty(() => FILTER_PROPERTIES)
+        setForecasts((prevValues) => prevValues.map((forecast) => {
+          return {
+            ...forecast,
+            visable: true
+          }
+        }))
+      
+      }
+
+    const filterTools: PropertyProps = {properties, changeProperty, handleFilter, resetFilter}
 
     return {
         forecasts,

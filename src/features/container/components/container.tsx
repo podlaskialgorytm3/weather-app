@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import { Loading } from "../../../shared/components/loading";
 import { useProcessingData } from "../hooks/use-processing-data";
 
-
 export const Container = () => {
     const [location, setLocation] = useState('');
     const { forecasts, isLoading, refetch, handleDelete, handleSort, filterTools } = useProcessingData(location);
@@ -20,8 +19,6 @@ export const Container = () => {
             setLocation(values.location);
         },
     });
-
-    
 
     useEffect(() => {
         if (location) {
