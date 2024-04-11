@@ -1,19 +1,14 @@
 import { hourConverter } from "../../container/utils/hour-converter"
 import { WeatherProperty } from "./weather-property"
 import { WeatherCardType } from "../types/weather-card";
+import { CountryIcon } from "./country-icon";
 
 export const WeatherCard = ({index,forecast,onDelete} : WeatherCardType) => {
     return(
         <div key={index} className="bg-white bg-opacity-50 p-5 rounded-lg m-5 relative">
             <div className="flex flex-col justify-start">
                 <div className="flex justify-start items-center">
-                {forecast.country && 
-                    (<img 
-                        src={`https://flagcdn.com/128x96/${forecast.country.toLowerCase()}.png`} 
-                        className="mr-3"
-                        alt="" 
-                        width={30} 
-                    />)}
+                {forecast.country && (<CountryIcon country={forecast.country} />)}
                     <h1 className="text-3xl font-bold mb-1">
                         <a 
                             href={`https://www.google.pl/maps/place/${forecast.city}`}
