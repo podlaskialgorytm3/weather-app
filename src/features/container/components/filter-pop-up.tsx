@@ -1,36 +1,18 @@
-import React from 'react';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Slider from '@mui/material/Slider';
-import { popupStyle, FILTER_PROPERTIES } from '../constants/filter-pop-up';
+import { popupStyle } from '../constants/filter-pop-up';
+import { PropertyProps } from '../types/property';
 
-
-
-export const FilterPopUp = () => {
+export const FilterPopUp = ({filterTools} : {filterTools: PropertyProps}) => {
   const [open, setOpen] = useState(false);
-  const [properties, setProperties] = useState(FILTER_PROPERTIES)
-  const [changedProperty, setChangedProperty] = useState(FILTER_PROPERTIES)
+  const {properties, changeProperty, handleFilter} = filterTools;
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const changeProperty = (event: React.ChangeEvent<HTMLInputElement>, newValue: number[]) => {
-    const name = event.target.name;
-    setChangedProperty((prevValue) => prevValue.map((item) => {
-      if (item[0] === name) {
-        return [item[0], item[1], item[2], item[3],newValue[0],newValue[1]]
-      }
-      return item
-    }))
-  }
-
-  const handleSubmit = () => {
-    setProperties(() => changedProperty)
-    setOpen(false)
-    console.log(properties)
-  }
 
   return (
     <div>
@@ -58,7 +40,7 @@ export const FilterPopUp = () => {
                 ))}
             </div>
             <Button 
-                onClick={handleSubmit} 
+                onClick={handleFilter} 
                 variant="outlined"
                 color="primary"
                 sx={{marginTop: 3}}

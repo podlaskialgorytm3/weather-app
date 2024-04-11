@@ -1,12 +1,16 @@
 import { useFetchWeather } from "../api/use-fetch-weather";
 import { Forecast } from "../types/forecast";
+import { FILTER_PROPERTIES } from "../constants/filter-pop-up";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Swal from "sweetalert2";
 import { SelectChangeEvent } from "@mui/material";
+import { PropertyProps } from "../types/property";
 
 export const useProcessingData = (location: string) => {
     const [forecasts, setForecasts] = useState<Forecast[]>([]);
+    const [properties, setProperties] = useState(FILTER_PROPERTIES)
+    const [changedProperty, setChangedProperty] = useState(FILTER_PROPERTIES)
     const { data, isError, error, refetch, isLoading } = useFetchWeather(location);
     const id = uuidv4();
 
@@ -77,11 +81,28 @@ export const useProcessingData = (location: string) => {
         setForecasts(sortedForecasts);
     }
 
+    const changeProperty = (event: React.ChangeEvent<HTMLInputElement>, newValue: number[]) => {
+        const name = event.target.name;
+        setChangedProperty((prevValue) => prevValue.map((item) => {
+          if (item[0] === name) {
+            return [item[0], item[1], item[2], item[3],newValue[0],newValue[1]]
+          }
+          return item
+        }))
+      }
+    
+      const handleFilter = () => {
+        setProperties(() => changedProperty)
+      }
+
+    const filterTools: PropertyProps = {properties, changeProperty, handleFilter}
+
     return {
         forecasts,
         isLoading,
         refetch,
         handleDelete,
-        handleSort
+        handleSort,
+        filterTools
     }
 }

@@ -1,3 +1,5 @@
+import { PropertyArray } from "../types/property";
+
 export const popupStyle = {
     position: 'absolute' as 'absolute',
     top: '50%',
@@ -14,7 +16,7 @@ export const popupStyle = {
     p: 4,
   };
   
-export const FILTER_PROPERTIES = [
+export const FILTER_PROPERTIES: PropertyArray = [
       ['temp',-100,100,'°C',-100,100],
       ['pressure',0,2000,'hPa',0,2000],
       ['humidity',0,100,'%',0,100],
