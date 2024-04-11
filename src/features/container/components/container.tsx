@@ -1,5 +1,5 @@
 import { SearchBar } from "../../search/components/search-bar";
-import { WeatherCard } from "./weather-card";
+import { WeatherCard } from "../../weather-card/components/weather-card";
 import { FilterPopUp } from "./filter-pop-up";
 import { SelectBar } from "./select-bar";
 import { useFormik } from 'formik';

@@ -17,8 +17,8 @@ export const popupStyle = {
   };
   
 export const FILTER_PROPERTIES: PropertyArray = [
-      ['temp',-100,100,'°C',-100,100],
-      ['pressure',0,2000,'hPa',0,2000],
+      ['temp',-50,50,'°C',-50,50],
+      ['pressure',800,1200,'hPa',800,1200],
       ['humidity',0,100,'%',0,100],
-      ['wind',0,100,'m/s',0,100],
+      ['wind',0,40,'m/s',0,40],
   ]

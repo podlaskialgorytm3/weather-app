@@ -1,4 +1,4 @@
-import { hourConverter } from "../utils/hour-converter"
+import { hourConverter } from "../../container/utils/hour-converter"
 import { WeatherProperty } from "./weather-property"
 import { WeatherCardType } from "../types/weather-card";
 

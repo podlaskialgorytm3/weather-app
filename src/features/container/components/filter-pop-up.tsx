@@ -13,7 +13,6 @@ export const FilterPopUp = ({filterTools} : {filterTools: PropertyProps}) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-
   return (
     <div>
       <Button onClick={handleOpen} variant="outlined" color="primary">set filter</Button>

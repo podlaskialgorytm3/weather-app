@@ -1,4 +1,4 @@
-import { Forecast } from "./forecast";
+import { Forecast } from "../../container/types/forecast";
 
 export interface WeatherCardType {
     index: number;
