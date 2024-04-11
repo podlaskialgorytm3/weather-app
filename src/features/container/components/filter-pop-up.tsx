@@ -23,6 +23,7 @@ export const FilterPopUp = () => {
       }
       return item
     }))
+    console.log(property)
   }
 
   const handleSubmit = () => {
@@ -47,7 +48,7 @@ export const FilterPopUp = () => {
                             getAriaValueText={(value) => `${value}`}
                             name={String(property[0])}
                             valueLabelDisplay="auto"
-                            onChange={changeProperty}
+                            onChange={(event: any, newValue:any) => changeProperty(event,newValue)}
                             step={1}
                             min={Number(property[1])}
                             max={Number(property[2])}
