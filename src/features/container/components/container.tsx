@@ -35,7 +35,7 @@ export const Container = () => {
                         <SelectBar handleSort={handleSort} />
                         <FilterPopUp filterTools={filterTools} />
                     </div>
-                    <div className="w-[900px]">
+                    <div className="md:w-[900px] w-[300px] sm:w-[500px]">
                         {isLoading && <Loading size={100} />}
                         {
                             forecasts.map((forecast, index) => (
