@@ -5,7 +5,7 @@
 
 <h3>🛠️ Features</h3>
     <ul>
-        <li>Search most locations around the world and check their weather in one time.</li>
+        <li>Search most locations around the world and check/compare their weather at the same time.</li>
         <li>Possibility to check properties such as: temperature, pressure, air humidity, wind speed, sunrise and sunset.</li>
         <li>Sort weather forecasts in multiple ways to select locations with the most desirable weather.</li>
         <li>Filtering weather forecasts in a very flexible way and the ability to reset your search settings.</li>
