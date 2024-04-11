@@ -7,7 +7,7 @@ const fetchWeather = async (location: string) => {
     }
 
     try {
-        const response = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API_WEATHER_KEY}&units=metric&lang=en`);
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_API_WEATHER_KEY}&units=metric&lang=en`);
 
         if (!response.data) {
             throw new Error('Empty response');
