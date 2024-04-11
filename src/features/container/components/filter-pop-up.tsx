@@ -23,7 +23,7 @@ export const FilterPopUp = ({filterTools} : {filterTools: PropertyProps}) => {
         <Box sx={popupStyle}>
             <div className='w-[400px]'>
                 {properties.map((property, index) => (
-                    <div key={index}>
+                    <div key={index} className='flex flex-col items-center'>
                         <h3 className='text-xl font-bold'>{property[0]} ({property[3]})</h3>
                         <Slider
                             defaultValue={[Number(property[4]),Number(property[5])]}
@@ -34,6 +34,15 @@ export const FilterPopUp = ({filterTools} : {filterTools: PropertyProps}) => {
                             step={1}
                             min={Number(property[1])}
                             max={Number(property[2])}
+                            sx={{
+                                width: '80%',
+                                '@media (max-width: 600px)': {
+                                  width: '70%',
+                                },
+                                '@media (max-width: 350px)': {
+                                  width: '50%',
+                                },
+                            }}
                         />
                     </div>
                 ))}

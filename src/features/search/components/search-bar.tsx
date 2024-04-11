@@ -27,6 +27,9 @@ export const SearchBar = ({formik} : {formik: any}) => {
                         '& input': {
                             padding: '10px 20px',
                         },
+                        '@media (max-width: 600px)': {
+                            width: '90%',
+                        }
                     }}
                 />
            </form>

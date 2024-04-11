@@ -14,6 +14,10 @@ export const popupStyle = {
     flexDirection: 'column' as 'column',
     alignItems: 'center',
     p: 4,
+    '@media (max-width: 600px)': {
+      width: '90%',
+      height: '60%',
+    },
   };
   
 export const FILTER_PROPERTIES: PropertyArray = [

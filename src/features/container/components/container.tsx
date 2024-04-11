@@ -30,8 +30,8 @@ export const Container = () => {
         <div className="bg-gradient-to-r from-indigo-400 to-cyan-400 h-[auto] w-full bg-center bg-no-repeat min-h-[100vh]">
             <SearchBar formik={formik} />
             <div className="flex flex-col items-center justify-center mt-10">
-                <div className="flex">
-                    <div className="w-[300px] bg-white bg-opacity-50 p-5 rounded-lg m-5 h-[180px] flex flex-col justify-around items-center">
+                <div className="flex flex-col items-center md:flex-row md:items-start">
+                    <div className="w-[280px] h-[150px] md:w-[300px] bg-white bg-opacity-50 p-5 rounded-lg m-5 md:h-[180px] flex flex-col justify-around items-center">
                         <SelectBar handleSort={handleSort} />
                         <FilterPopUp filterTools={filterTools} />
                     </div>
