@@ -95,17 +95,20 @@ export const useProcessingData = (location: string) => {
     
       const handleFilter = () => {
         setProperties(() => changedProperty)
-        setForecasts((prevValues) => prevValues.filter((forecast) => {
-          let isFiltered = true;
+        setForecasts((prevValues) => prevValues.map((forecast) => {
+          let isVisable = true;
           changedProperty.forEach((property) => {
             const propertyType: keyof Forecast = property[0];
-            const min = property[4];
-            const max = property[5];
-            if (forecast[propertyType] < min || forecast[propertyType] > max) {
-              isFiltered = false;
+            const minValue = property[4];
+            const maxValue = property[5];
+            if (forecast[propertyType] < minValue || forecast[propertyType] > maxValue) {
+              isVisable = false;
             }
           })
-          return isFiltered;
+          return {
+            ...forecast,
+            visable: isVisable
+          }
         }))
       }
 
