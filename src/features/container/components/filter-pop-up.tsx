@@ -10,25 +10,26 @@ import { popupStyle, FILTER_PROPERTIES } from '../constants/filter-pop-up';
 
 export const FilterPopUp = () => {
   const [open, setOpen] = useState(false);
-  const [property, setProperty] = useState(FILTER_PROPERTIES)
+  const [properties, setProperties] = useState(FILTER_PROPERTIES)
+  const [changedProperty, setChangedProperty] = useState(FILTER_PROPERTIES)
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const changeProperty = (event: React.ChangeEvent<HTMLInputElement>, newValue: number[]) => {
     const name = event.target.name;
-    setProperty(property.map((item) => {
+    setChangedProperty((prevValue) => prevValue.map((item) => {
       if (item[0] === name) {
-        return [item[0], newValue[0], newValue[1], item[3]]
+        return [item[0], item[1], item[2], item[3],newValue[0],newValue[1]]
       }
       return item
     }))
-    console.log(property)
   }
 
   const handleSubmit = () => {
-    console.log(property)
+    setProperties(() => changedProperty)
     setOpen(false)
+    console.log(properties)
   }
 
   return (
@@ -40,11 +41,11 @@ export const FilterPopUp = () => {
       >
         <Box sx={popupStyle}>
             <div className='w-[400px]'>
-                {FILTER_PROPERTIES.map((property, index) => (
+                {properties.map((property, index) => (
                     <div key={index}>
                         <h3 className='text-xl font-bold'>{property[0]} ({property[3]})</h3>
                         <Slider
-                            defaultValue={[Number(property[1]),Number(property[2])]}
+                            defaultValue={[Number(property[4]),Number(property[5])]}
                             getAriaValueText={(value) => `${value}`}
                             name={String(property[0])}
                             valueLabelDisplay="auto"
