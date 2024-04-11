@@ -1,30 +1,41 @@
-# React + TypeScript + Vite
+<h1>🌤️ Weather App</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h2> 🚀 If you want to check out the website, click the link below!</h2>
+<a target="_blank" href="https://weather-app-smoky-six-65.vercel.app/">Weather App</a>
 
-Currently, two official plugins are available:
+<h3>🛠️ Features</h3>
+    <ul>
+        <li>Search most locations around the world and check their weather.</li>
+        <li>Possibility to check properties such as: temperature, pressure, air humidity, wind speed, sunrise and sunset.</li>
+        <li>Sort weather forecasts in multiple ways to select locations with the most desirable weather.</li>
+        <li>Filtering weather forecasts in a very flexible way and the ability to reset your search settings.</li>
+    </ul>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h2>💻 Built with</h2>
 
-## Expanding the ESLint configuration
+Technologies used in the project:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+*   Typescript
+*   React
+*   Tailwind
+*   React Router
+*   Tanstack Query
+*   Material UI
+*   Vercel
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+<h2>🤖 Application Programming Interface (API)</h2>
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+<p>The project was created using the weather API, which is provided by <a target="_blank" href="https://openweathermap.org/">Open Weather</a>
+</p>
+
+<h2>📸 Screenshots</h2>
+
+<h3>🏠 Home Page</h3>
+<img width="1200px" src="/image/1.JPG" alt="">
+
+<h3>🔍 Filter</h3>
+<img width="1200px" src="/image/2.JPG" alt="">
+
+<h3>🔄 Sorting</h3>
+<img width="1200px" src="/image/3.JPG" alt="">
